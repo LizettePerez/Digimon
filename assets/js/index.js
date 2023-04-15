@@ -94,8 +94,6 @@ function sortByName(order) {
     });
 }
 
-sortByName("asc"); // Ordenar por nombre de forma ascendente
-sortByName("desc"); // Ordenar por nombre de forma descendente
 
 
 
