@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digimon</title>
+  <link rel="shortcut icon" href="./assets/img/FavIcon.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="stylesheet" href="./assets/css/style.css">
@@ -15,10 +16,12 @@
 </head>
 
 <body>
-
-  <nav class="navbar navbar-expand-lg bg-light sticky-top">
+  <div class="logo">
+    <img src="./assets/img/Logo.png" alt="logo">
+  </div>
+  <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #a4beda;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="./index.html">Digimon</a>
+      <a class="navbar-brand text-white" href="./index.html">Digimon</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -26,53 +29,44 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="https://digimon-api.vercel.app/" target="_blank">API Digimon</a>
+            <a class="nav-link text-light" href="https://digimon-api.vercel.app/" target="_blank">API Digimon</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Sort By
+            <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Sort By Level
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Images</a></li>
-              <li><a class="dropdown-item" href="#">A-Z</a></li>
-              <li><a class="dropdown-item" href="#">Z-A</a></li>
+              <li><a class="dropdown-item" href="#" onclick="sortByLevel('armor')">Armor</a></li>
+              <li><a class="dropdown-item" href="#" onclick="sortByLevel('champion')">Champion</a></li>
+              <li><a class="dropdown-item" href="#" onclick="sortByLevel('fresh')">Fresh</a></li>
+              <li><a class="dropdown-item" href="#" onclick="sortByLevel('in training')">In Training</a></li>
+              <li><a class="dropdown-item" href="#" onclick="sortByLevel('mega')">Mega</a></li>
+              <li><a class="dropdown-item" href="#" onclick="sortByLevel('rookie')">Rookie</a></li>
+              <li><a class="dropdown-item" href="#" onclick="sortByLevel('ultimate')">Ultimate</a></li>
+              <li><a class="dropdown-item" href="#" onclick="sortByAllLevel('asc')">All</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Sort By Name
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" onclick="sortByName('asc')">A - Z</a></li>
+              <li><a class="dropdown-item" href="#" onclick="sortByName('desc')">Z - A</a></li>
             </ul>
           </li>
         </ul>
-        <form class="d-flex" role="search">
+        <form class="d-flex" role="search" id="searchSection">
           <input id="inputName" class="form-control me-2" type="search" placeholder="Digimon's name"
             aria-label="Search">
-          <button class="btn btn-outline-success" type="button" onclick="searchName()">Search</button>
-          <input id="inputLevel" class="form-control me-2" type="search" placeholder="Digimon's level"
-            aria-label="Search">
-          <button class="btn btn-outline-success" type="button" onclick="searchLevel()">Search</button>
+          <button class="btn btn-light type="button" onclick="searchName()">Search</button>
         </form>
       </div>
     </div>
   </nav>
   <main>
-    <div class="sortByName">
-      <button onclick="sortByName('asc')">A-Z</button>
-      <button onclick="sortByName('desc')">Z-A</button>
-    </div>
-    
 
-
-    <div class="digimon-container">
-      <div id="carta"></div>
-      <div id="galeria"></div>
-      <table id="tabla_principal" class="table container text-center">
-        <thead>
-          <tr>
-            <th scope="col">Digimon's name</th>
-            <th scope="col">Picture of the Digimon</th>
-            <th scope="col">Digimon's level</th>
-          </tr>
-        </thead>
-        <tbody id="contenido" class="contenido table-group-divider">
-        </tbody>
-      </table>
-    </div>
+    <div class="digimonContainer" id="digimonContainer"></div>
   </main>
 
 
