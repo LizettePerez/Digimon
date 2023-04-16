@@ -11,7 +11,7 @@ function cardDigimon(datos) {
       <div class="card" style="width: 14rem; border: 3px solid #a4beda;">
         <img src="${digimon.img}" class="card-img-top" alt="${digimon.name}" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal${digimon.name}">
         <div class="card-body">
-          <h5 class="card-title text-light">${digimon.name}</h5>
+          <h5 class="card-title text-black">${digimon.name}</h5>
           <p class="card-text text-secondary">${digimon.level}</p>
         </div>
       </div>

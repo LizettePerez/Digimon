@@ -46,12 +46,8 @@ body {
   font-weight: bold;
 }
 
-.card-body, .modal {
-  background-color: #a4bedab9;
-  border-radius: 15px;
-}
 
-.modal-header, .modal-footer {
+.modal-header, .modal-footer, .modal {
   background-color: #a4bedab9;
   color: white;
 }
