@@ -3,15 +3,15 @@ const URL_DIGIMON = URL_BASE + '/digimon';
 
 let digimonContainer;
 
-function tabla(datos) {
+function cardDigimon(datos) {
   digimonContainer.innerHTML = "";
 
   for (let digimon of datos) {
     digimonContainer.innerHTML += `
-      <div class="card border-primary" style="width: 14rem;">
+      <div class="card" style="width: 14rem; border: 3px solid #a4beda;">
         <img src="${digimon.img}" class="card-img-top" alt="${digimon.name}" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal${digimon.name}">
         <div class="card-body">
-          <h5 class="card-title text-dark">${digimon.name}</h5>
+          <h5 class="card-title text-light">${digimon.name}</h5>
           <p class="card-text text-secondary">${digimon.level}</p>
         </div>
       </div>
@@ -19,12 +19,11 @@ function tabla(datos) {
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel${digimon.name}">${digimon.name}</h1>
+              <h1 class="modal-title w-100 text-center fs-5" id="exampleModalLabel${digimon.name}">${digimon.name}</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <img src="${digimon.img}" alt="${digimon.name}" title="${digimon.name}" >
-            <div class="modal-body">
-            <h6>LEVEL</h6>
+            <img src="${digimon.img}" alt="${digimon.name}">
+            <div class="modal-body text-secondary text-center">
               ${digimon.level}
             </div>
             <div class="modal-footer">
@@ -34,6 +33,42 @@ function tabla(datos) {
         </div>
       </div>`;
   }
+}
+
+function cardGallery(datos) {
+  digimonContainer.innerHTML = "";
+
+  for (let digimon of datos) {
+    digimonContainer.innerHTML += `
+      <div class="card" style="width: 18rem; border: 3px solid #a4beda;">
+        <img src="${digimon.img}" class="card-img-top" alt="${digimon.name}" title="${digimon.name}" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal${digimon.name}">
+      </div>
+      <div class="modal fade" id="exampleModal${digimon.name}" tabindex="-1" aria-labelledby="exampleModalLabel${digimon.name}" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title w-100 text-center fs-5" id="exampleModalLabel${digimon.name}">${digimon.name}</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <img src="${digimon.img}" alt="${digimon.name}">
+            <div class="modal-body text-secondary text-center">
+              ${digimon.level}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }
+}
+
+function showGallery() {
+  fetch(URL_DIGIMON)
+    .then(response => response.json())
+    .then(datos => {
+      cardGallery(datos);
+    });
 }
 
 
@@ -46,13 +81,13 @@ function searchName() {
     fetch(URL_DIGIMON)
       .then(response => response.json())
       .then(datos => {
-        tabla(datos);
+        cardDigimon(datos);
       });
   } else {
     fetch(URL_DIGIMON + '/name/' + nombreDigimon)
       .then(response => response.json())
       .then(datos => {
-        tabla(datos);
+        cardGallery(datos);
       });
   }
 }
@@ -63,7 +98,7 @@ function sortByLevel(level) {
   fetch(URL_DIGIMON + '/level/' + level)
     .then(response => response.json())
     .then(datos => {
-      tabla(datos);
+      cardDigimon(datos);
     });
 }
 
@@ -93,7 +128,7 @@ function sortByAllLevel(orden) {
           }
         });
       }
-      tabla(datos);
+      cardDigimon(datos);
     });
 }
 
@@ -125,7 +160,7 @@ function sortByName(orden) {
         });
       }
 
-      tabla(datos);
+      cardDigimon(datos);
     });
 }
 
@@ -138,7 +173,7 @@ $(document).ready(function () {
     .then(response => response.json())
     .then(datos => {
       console.log(datos);
-      tabla(datos);
+      cardDigimon(datos);
     });
 
 });

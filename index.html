@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digimon</title>
-  <link rel="shortcut icon" href="./assets/img/FavIcon.png">
+  <link rel="shortcut icon" href="./assets/img/Logo.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="stylesheet" href="./assets/css/style.css">
@@ -17,7 +17,7 @@
 
 <body>
   <div class="logo">
-    <img src="./assets/img/Logo.png" alt="logo">
+    <a  href="./index.html"><img src="./assets/img/Logo.png" alt="logo"></a>
   </div>
   <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #a4beda;">
     <div class="container-fluid">
@@ -36,6 +36,7 @@
               Sort By Level
             </a>
             <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" onclick="sortByAllLevel('asc')">All</a></li>
               <li><a class="dropdown-item" href="#" onclick="sortByLevel('armor')">Armor</a></li>
               <li><a class="dropdown-item" href="#" onclick="sortByLevel('champion')">Champion</a></li>
               <li><a class="dropdown-item" href="#" onclick="sortByLevel('fresh')">Fresh</a></li>
@@ -43,7 +44,6 @@
               <li><a class="dropdown-item" href="#" onclick="sortByLevel('mega')">Mega</a></li>
               <li><a class="dropdown-item" href="#" onclick="sortByLevel('rookie')">Rookie</a></li>
               <li><a class="dropdown-item" href="#" onclick="sortByLevel('ultimate')">Ultimate</a></li>
-              <li><a class="dropdown-item" href="#" onclick="sortByAllLevel('asc')">All</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -55,11 +55,14 @@
               <li><a class="dropdown-item" href="#" onclick="sortByName('desc')">Z - A</a></li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#" onclick="showGallery()">Gallery</a>
+          </li>
         </ul>
         <form class="d-flex" role="search" id="searchSection">
           <input id="inputName" class="form-control me-2" type="search" placeholder="Digimon's name"
             aria-label="Search">
-          <button class="btn btn-light type="button" onclick="searchName()">Search</button>
+          <button class="btn btn-light" type="button" onclick="searchName()">Search</button>
         </form>
       </div>
     </div>

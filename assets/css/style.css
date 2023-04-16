@@ -4,11 +4,17 @@
   justify-content: center;
 }
 
-main {
+.logo img:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  animation: rotate 4s linear infinite;
+}
+
+body {
   background-image: url(../img/background.png);
 }
 
-.modal-header {
+.modal-header, .card-title {
   text-transform: uppercase;
 }
 
@@ -22,10 +28,30 @@ main {
   padding: 10px;
   margin: 10px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 15px;
 }
 
 .card img:hover {
   cursor: pointer;
   transform: scale(1.05);
   animation: rotate 4s linear infinite;
+}
+
+.btn:hover, .button:hover {
+  background-color: #a4beda;
+  color: white;
+}
+
+.navbar {
+  font-weight: bold;
+}
+
+.card-body, .modal {
+  background-color: #a4bedab9;
+  border-radius: 15px;
+}
+
+.modal-header, .modal-footer {
+  background-color: #a4bedab9;
+  color: white;
 }
